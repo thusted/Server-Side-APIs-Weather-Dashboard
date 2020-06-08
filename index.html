@@ -1,11 +1,126 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"/>
+
+        <link rel="stylesheet" href="assets/style.css"/>
+
+        <title>Weather Dashboard</title>
+    </head>
+    <body>
+        <header>
+            <div class="jumbotron jumbotron-fluid">
+                <div class="container">
+                    <h1 class="display-4">Weather Dashboard</h1>
+                    <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+                </div>
+            </div>
+        </header>
+
+        <div class="row">
+            <div class="col-sm-4">
+                <form class="form-inline" style="width: 18rem;">
+                    <div class="form-group mb-2">
+                        <p id="searchForACity">Search for a City:</p>
+                    </div>
+                    <div class="form-group mx-sm-3 mb-2">
+                        <input class="form-control" id="inputCity">
+                    </div>
+                    <button type="submit" class="btn btn-primary mb-2" id="searchBtn"><i class="fa fa-search"></i></button>
+                </form>
+                <br>
+                <div class="row">
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-header">
+                            Search History:
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Cras justo odio</li>
+                            <li class="list-group-item">Dapibus ac facilisis in</li>
+                            <li class="list-group-item">Vestibulum at eros</li>
+                        </ul>
+                    </div>
+                </div>
+                <br>
+            </div>
+            <div class="col-sm-8">
+                <div class="card">
+                    <!-- <img src="..." class="card-img-top" alt="..."> -->
+                    <div class="card-body">
+                        <h5 class="card-title" id="currentCity"></h5>
+                        <p class="card-text" id="currentTemp"></p>
+                        <p class="card-text" id="currentHumidity"></p>
+                        <p class="card-text" id="currentWind"></p>
+                        <p class="card-text" id="uvIndex">UV Index: <a href="#" class="btn btn-primary">UV</a></p>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <h5 id="fiveDayForecastTitle">5-Day Forecast:</h5>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2 fiveDayDisplay">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">Temp:</p>
+                                <p class="card-text">Humidity:</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-2 fiveDayDisplay">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">Temp:</p>
+                                <p class="card-text">Humidity:</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-2 fiveDayDisplay">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">Temp:</p>
+                                <p class="card-text">Humidity:</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-2 fiveDayDisplay">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">Temp:</p>
+                                <p class="card-text">Humidity:</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-2 fiveDayDisplay">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">Temp:</p>
+                                <p class="card-text">Humidity:</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="assets/script.js"></script>
+    </body>
 </html>

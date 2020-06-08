@@ -1,0 +1,14 @@
+#searchForACity {
+    padding-left: 1rem;
+}
+
+#fiveDayForecastTitle {
+    padding-left: 1rem;
+}
+
+.clouds {
+    background-image: url(https://media.giphy.com/media/l41lQIclE3lItAlfq/giphy.gif);
+    width: fit-content;
+    height: fit-content;
+}
+
