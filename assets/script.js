@@ -61,7 +61,7 @@ function searchForCity(cityName) {
         let lat = response.coord.lat;
         let lon = response.coord.lon;
 
-        let queryURLUV = "http://api.openweathermap.org/data/2.5/uvi?appid=" + apiKey + "&lat=" + lat + "&lon=" + lon;
+        let queryURLUV = "https://api.openweathermap.org/data/2.5/uvi?appid=" + apiKey + "&lat=" + lat + "&lon=" + lon;
 
         $.ajax({
             url: queryURLUV,
