@@ -4,12 +4,12 @@ let cities = [];
 function searchForCity(cityName) {
     let queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + apiKey;
 
-    //AJAX call for current day
+    //AJAX call for current day weather
     $.ajax({
         url: queryURL,
         method: "GET"
     }).then(function(response){
-        //console.log(response);
+        console.log(response);
 
         let city = response.name;
 
@@ -35,6 +35,8 @@ function searchForCity(cityName) {
         $("#currentSearch").removeClass("clear");
         $("#weatherIcon").removeClass("fas fa-cloud-rain");
         $("#currentSearch").removeClass("rain");
+        $("#weatherIcon").removeClass("fas fa-smog");
+        $("#currentSearch").removeClass("smoke");
 
         if(weatherConditions === "Clouds"){
             $("#weatherIcon").addClass("fa fa-cloud");
@@ -52,6 +54,11 @@ function searchForCity(cityName) {
             $("#currentSearch").addClass("rain");
         };
 
+        if(weatherConditions === "Smoke"){
+            $("#weatherIcon").addClass("fas fa-smog");
+            $("#currentSearch").addClass("smoke");
+        };
+
         let lat = response.coord.lat;
         let lon = response.coord.lon;
 
@@ -61,9 +68,8 @@ function searchForCity(cityName) {
             url: queryURLUV,
             method: "GET"
         }).then (function(response){
-            //console.log(response);
             let uv = response.value;
-            console.log(uv);
+        
             $("#uv").text(uv);
 
             $("a").removeClass("low");
@@ -103,11 +109,11 @@ function searchForCity(cityName) {
         method: "GET"
     }).then(function(response){
         //Day 1 Date
-        let day1 = new Date(response.list[1].dt * 1000).toLocaleDateString("en-US");
+        let day1 = new Date(response.list[9].dt * 1000).toLocaleDateString("en-US");
         $("#day1").text("(" + day1 + ")");
 
         //Day 1 Icon and Background
-        let day1WeatherCondition = response.list[1].weather[0].main;
+        let day1WeatherCondition = response.list[9].weather[0].main;
 
         $("#weatherIcon1").removeClass("fa fa-cloud");
         $("#day1Body").removeClass("clouds");
@@ -133,20 +139,20 @@ function searchForCity(cityName) {
         };
 
         //Day 1 Temp
-        let kTemp1 = response.list[1].main.temp;
+        let kTemp1 = response.list[9].main.temp;
         let fTemp1 = (kTemp1 - 273.15) * 1.80 + 32;
         $("#day1Temp").text("Temperature: " + fTemp1.toFixed(2) + " °F");
 
         //Day 1 Humidity
-        let humidity1 = response.list[1].main.humidity;
+        let humidity1 = response.list[9].main.humidity;
         $("#day1Humidity").text("Humidity: " + humidity1 + "%");
         
         //Day 2 Date
-        let day2 = new Date(response.list[9].dt * 1000).toLocaleDateString("en-US");
+        let day2 = new Date(response.list[17].dt * 1000).toLocaleDateString("en-US");
         $("#day2").text("(" + day2 + ")");
 
         //Day 2 Icon and Background
-        let day2WeatherCondition = response.list[9].weather[0].main;
+        let day2WeatherCondition = response.list[17].weather[0].main;
 
         $("#weatherIcon2").removeClass("fa fa-cloud");
         $("#day2Body").removeClass("clouds");
@@ -172,20 +178,20 @@ function searchForCity(cityName) {
         };
 
         //Day 2 Temp
-        let kTemp2 = response.list[9].main.temp;
+        let kTemp2 = response.list[17].main.temp;
         let fTemp2 = (kTemp2 - 273.15) * 1.80 + 32;
         $("#day2Temp").text("Temperature: " + fTemp2.toFixed(2) + " °F");
 
         //Day 2 Humidity
-        let humidity2 = response.list[9].main.humidity;
+        let humidity2 = response.list[17].main.humidity;
         $("#day2Humidity").text("Humidity: " + humidity2 + "%");
 
         //Day 3 Date
-        let day3 = new Date(response.list[17].dt * 1000).toLocaleDateString("en-US");
+        let day3 = new Date(response.list[25].dt * 1000).toLocaleDateString("en-US");
         $("#day3").text("(" + day3 + ")");
 
         //Day 3 Icon and Background
-        let day3WeatherCondition = response.list[17].weather[0].main;
+        let day3WeatherCondition = response.list[25].weather[0].main;
 
         $("#weatherIcon3").removeClass("fa fa-cloud");
         $("#day3Body").removeClass("clouds");
@@ -211,20 +217,20 @@ function searchForCity(cityName) {
         };
 
         //Day 3 Temp
-        let kTemp3 = response.list[17].main.temp;
+        let kTemp3 = response.list[25].main.temp;
         let fTemp3 = (kTemp1 - 273.15) * 1.80 + 32;
         $("#day3Temp").text("Temperature: " + fTemp3.toFixed(2) + " °F");
 
         //Day 3 Humidity
-        let humidity3 = response.list[17].main.humidity;
+        let humidity3 = response.list[25].main.humidity;
         $("#day3Humidity").text("Humidity: " + humidity3 + "%");
 
         //Day 4 Date
-        let day4 = new Date(response.list[25].dt * 1000).toLocaleDateString("en-US");
+        let day4 = new Date(response.list[33].dt * 1000).toLocaleDateString("en-US");
         $("#day4").text("(" + day4 + ")");
 
         //Day 4 Icon and Background
-        let day4WeatherCondition = response.list[25].weather[0].main;
+        let day4WeatherCondition = response.list[33].weather[0].main;
 
         $("#weatherIcon4").removeClass("fa fa-cloud");
         $("#day4Body").removeClass("clouds");
@@ -250,20 +256,20 @@ function searchForCity(cityName) {
         };
 
         //Day 4 Temp
-        let kTemp4 = response.list[25].main.temp;
+        let kTemp4 = response.list[33].main.temp;
         let fTemp4 = (kTemp1 - 273.15) * 1.80 + 32;
         $("#day4Temp").text("Temperature: " + fTemp4.toFixed(2) + " °F");
 
         //Day 4 Humidity
-        let humidity4 = response.list[25].main.humidity;
+        let humidity4 = response.list[33].main.humidity;
         $("#day4Humidity").text("Humidity: " + humidity4 + "%");
 
         //Day 5 Date
-        let day5 = new Date(response.list[33].dt * 1000).toLocaleDateString("en-US");
+        let day5 = new Date(response.list[39].dt * 1000).toLocaleDateString("en-US");
         $("#day5").text("(" + day5 + ")");
 
         //Day 5 Icon and Background
-        let day5WeatherCondition = response.list[33].weather[0].main;
+        let day5WeatherCondition = response.list[39].weather[0].main;
 
         $("#weatherIcon5").removeClass("fa fa-cloud");
         $("#day5Body").removeClass("clouds");
@@ -289,12 +295,12 @@ function searchForCity(cityName) {
         };
 
         //Day 5 Temp
-        let kTemp5 = response.list[33].main.temp;
+        let kTemp5 = response.list[39].main.temp;
         let fTemp5 = (kTemp1 - 273.15) * 1.80 + 32;
         $("#day5Temp").text("Temperature: " + fTemp5.toFixed(2) + " °F");
 
         //Day 5 Humidity
-        let humidity5 = response.list[33].main.humidity;
+        let humidity5 = response.list[39].main.humidity;
         $("#day5Humidity").text("Humidity: " + humidity5 + "%");
     });
 };
@@ -312,8 +318,6 @@ function renderButtons(){
         recentCityButton.text(cities[i]);
 
         $("#buttonsDisplay").prepend(recentCityButton);
-
-        console.log(recentCityButton);
     };
 };
     

@@ -10,23 +10,35 @@ header {
     padding-left: 1rem;
 }
 
+
+/* Weather Classes */
 .clouds {
     background-image: url(https://media.giphy.com/media/l41lQIclE3lItAlfq/giphy.gif);
-    width: fit-content;
-    height: fit-content;
+    background-size: cover;
+    background-repeat: no-repeat;
+    text-align: center;
 }
 
 .clear {
     background-image: url(https://media.giphy.com/media/EKpmZuydbsmRy/giphy.gif);
-    width: fit-content;
-    height: fit-content;
+    background-size: cover;
+    background-repeat: no-repeat;
+    text-align: center;
 }
 
 .rain {
     background-image: url(https://media.giphy.com/media/PN23U6cVRWFFe/giphy.gif);
-    width: fit-content;
-    height: fit-content;
+    background-size: cover;
+    background-repeat: no-repeat;
+    text-align: center;
     color: white;
+}
+
+.smoke {
+    background-image: url(https://media.giphy.com/media/aAvJE6v5JStKE/giphy.gif);
+    background-size: cover;
+    background-repeat: no-repeat;
+    text-align: center;
 }
 
 #recentlySearchedCities {
