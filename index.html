@@ -20,7 +20,7 @@
             <div class="jumbotron jumbotron-fluid">
                 <div class="container">
                     <h1 class="display-4">Weather Dashboard</h1>
-                    <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+                    <p class="lead">A web application to see the weather outlook for any given city.</p>
                 </div>
             </div>
         </header>
@@ -37,25 +37,17 @@
                     <button type="submit" class="btn btn-primary mb-2" id="searchBtn"><i class="fa fa-search"></i></button>
                 </form>
                 <br>
-                <div class="row">
-                    <div class="card" style="width: 18rem;">
-                        <div class="card-header">
-                            Search History:
-                        </div>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item">Cras justo odio</li>
-                            <li class="list-group-item">Dapibus ac facilisis in</li>
-                            <li class="list-group-item">Vestibulum at eros</li>
-                        </ul>
-                    </div>
+                <div class="row" id="btnRow">
+                    <p id="recentlySearchedCities">Recently Searched Cities:</p>
                 </div>
-                <br>
+                <div class="btn-group-vertical" id="buttonsDisplay"></div>
             </div>
             <div class="col-sm-8">
                 <div class="card">
-                    <!-- <img src="..." class="card-img-top" alt="..."> -->
-                    <div class="card-body">
+                    <div class="card-body" id="currentSearch">
                         <h5 class="card-title" id="currentCity"></h5>
+                        <i id="weatherIcon" class="card-img-top"></i>
+                        <br>
                         <p class="card-text" id="currentTemp"></p>
                         <p class="card-text" id="currentHumidity"></p>
                         <p class="card-text" id="currentWind"></p>
@@ -69,46 +61,51 @@
                 <div class="row">
                     <div class="col-sm-2 fiveDayDisplay">
                         <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Temp:</p>
-                                <p class="card-text">Humidity:</p>
+                            <div class="card-body" id="day1Body">
+                                <h5 class="card-title" id="day1">Card title</h5>
+                                <i id="weatherIcon1" class="card-img-top"></i>
+                                <p class="card-text" id="day1Temp">Temp:</p>
+                                <p class="card-text" id="day1Humidity">Humidity:</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-2 fiveDayDisplay">
                         <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Temp:</p>
-                                <p class="card-text">Humidity:</p>
+                            <div class="card-body" id="day2Body">
+                                <h5 class="card-title" id="day2">Card title</h5>
+                                <i id="weatherIcon2" class="card-img-top"></i>
+                                <p class="card-text" id="day2Temp">Temp:</p>
+                                <p class="card-text" id="day2Humidity">Humidity:</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-2 fiveDayDisplay">
                         <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Temp:</p>
-                                <p class="card-text">Humidity:</p>
+                            <div class="card-body" id="day3Body">
+                                <h5 class="card-title" id="day3">Card title</h5>
+                                <i id="weatherIcon3" class="card-img-top"></i>
+                                <p class="card-text" id="day3Temp">Temp:</p>
+                                <p class="card-text" id="day3Humidity">Humidity:</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-2 fiveDayDisplay">
                         <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Temp:</p>
-                                <p class="card-text">Humidity:</p>
+                            <div class="card-body" id="day4Body">
+                                <h5 class="card-title" id="day4">Card title</h5>
+                                <i id="weatherIcon4" class="card-img-top"></i>
+                                <p class="card-text" id="day4Temp">Temp:</p>
+                                <p class="card-text" id="day4Humidity">Humidity:</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-2 fiveDayDisplay">
                         <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Temp:</p>
-                                <p class="card-text">Humidity:</p>
+                            <div class="card-body" id="day5Body">
+                                <h5 class="card-title" id="day5">Card title</h5>
+                                <i id="weatherIcon5" class="card-img-top"></i>
+                                <p class="card-text" id="day5Temp">Temp:</p>
+                                <p class="card-text" id="day5Humidity">Humidity:</p>
                             </div>
                         </div>
                     </div>
@@ -119,7 +116,7 @@
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-        
+
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="assets/script.js"></script>
     </body>

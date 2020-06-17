@@ -1,3 +1,7 @@
+header {
+    text-align: center;
+}
+
 #searchForACity {
     padding-left: 1rem;
 }
@@ -12,3 +16,23 @@
     height: fit-content;
 }
 
+.clear {
+    background-image: url(https://media.giphy.com/media/EKpmZuydbsmRy/giphy.gif);
+    width: fit-content;
+    height: fit-content;
+}
+
+.rain {
+    background-image: url(https://media.giphy.com/media/PN23U6cVRWFFe/giphy.gif);
+    width: fit-content;
+    height: fit-content;
+    color: white;
+}
+
+#recentlySearchedCities {
+    margin-left: 2rem;
+}
+
+.btn-group-vertical {
+    margin-left: 2rem;
+}
