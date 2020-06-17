@@ -26,5 +26,6 @@ THEN I am presented with the last searched city forecast
 
 ## Image of Deployed Application
 ```
-![deployedApp](assets/deployedApplication.png)
+![deployedApp]
+(https://raw.githubusercontent.com/thusted/Server-Side-APIs-Weather-Dashboard/master/assets/deployedApplication.png)
 ```
