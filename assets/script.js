@@ -217,7 +217,7 @@ function searchForCity(cityName) {
 
         //Day 3 Temp
         let kTemp3 = response.list[25].main.temp;
-        let fTemp3 = (kTemp1 - 273.15) * 1.80 + 32;
+        let fTemp3 = (kTemp3 - 273.15) * 1.80 + 32;
         $("#day3Temp").text("Temperature: " + fTemp3.toFixed(2) + " °F");
 
         //Day 3 Humidity
@@ -256,7 +256,7 @@ function searchForCity(cityName) {
 
         //Day 4 Temp
         let kTemp4 = response.list[33].main.temp;
-        let fTemp4 = (kTemp1 - 273.15) * 1.80 + 32;
+        let fTemp4 = (kTemp4 - 273.15) * 1.80 + 32;
         $("#day4Temp").text("Temperature: " + fTemp4.toFixed(2) + " °F");
 
         //Day 4 Humidity
@@ -295,7 +295,7 @@ function searchForCity(cityName) {
 
         //Day 5 Temp
         let kTemp5 = response.list[39].main.temp;
-        let fTemp5 = (kTemp1 - 273.15) * 1.80 + 32;
+        let fTemp5 = (kTemp5 - 273.15) * 1.80 + 32;
         $("#day5Temp").text("Temperature: " + fTemp5.toFixed(2) + " °F");
 
         //Day 5 Humidity
