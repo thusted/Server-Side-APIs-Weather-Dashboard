@@ -24,5 +24,10 @@ WHEN I open the weather dashboard
 THEN I am presented with the last searched city forecast
 ```
 
+## Link to Deployed Application 
+[https://thusted.github.io/Server-Side-APIs-Weather-Dashboard/](https://thusted.github.io/Server-Side-APIs-Weather-Dashboard/)
+
 ## Image of Deployed Application
 ![](assets/deployedApplication.png)
+
+
