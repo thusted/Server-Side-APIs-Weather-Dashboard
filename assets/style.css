@@ -36,3 +36,24 @@ header {
 .btn-group-vertical {
     margin-left: 2rem;
 }
+
+/* UV Index Classes */
+.low {
+    background: green;
+}
+
+.moderate {
+    background: yellow;
+}
+
+.high {
+    background: orange;
+}
+
+.veryHigh {
+    background: red;
+}
+
+.extreme {
+    background: magenta;
+}

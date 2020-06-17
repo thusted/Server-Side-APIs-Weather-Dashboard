@@ -1,5 +1,3 @@
-$(document).ready(function() {
-
 const apiKey = "4de73193406a7f35e8b27fe430465b0a";
 let cities = [];
 
@@ -11,8 +9,8 @@ function searchForCity(cityName) {
         url: queryURL,
         method: "GET"
     }).then(function(response){
-        console.log(response);
-        
+        //console.log(response);
+
         let city = response.name;
 
         let date = new Date(response.dt * 1000).toLocaleDateString("en-US");
@@ -53,6 +51,48 @@ function searchForCity(cityName) {
             $("#weatherIcon").addClass("fas fa-cloud-rain");
             $("#currentSearch").addClass("rain");
         };
+
+        let lat = response.coord.lat;
+        let lon = response.coord.lon;
+
+        let queryURLUV = "http://api.openweathermap.org/data/2.5/uvi?appid=" + apiKey + "&lat=" + lat + "&lon=" + lon;
+
+        $.ajax({
+            url: queryURLUV,
+            method: "GET"
+        }).then (function(response){
+            //console.log(response);
+            let uv = response.value;
+            console.log(uv);
+            $("#uv").text(uv);
+
+            $("a").removeClass("low");
+            $("a").removeClass("moderate");
+            $("a").removeClass("high");
+            $("a").removeClass("veryHigh");
+            $("a").removeClass("extreme");
+
+
+            if(uv >= 1 && uv < 3){
+                $("a").addClass("low");
+            };
+
+            if(uv >= 3 && uv < 6) {
+                $("a").addClass("moderate");
+            };
+
+            if(uv >= 6 && uv < 8) {
+                $("a").addClass("high");
+            };
+
+            if(uv >= 8 && uv < 11) {
+                $("a").addClass("veryHigh");
+            };
+
+            if(uv >= 11) {
+                $("a").addClass("extreme");
+            };
+        });
     });
 
     let queryURLForecast = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&appid=" + apiKey;
@@ -104,7 +144,7 @@ function searchForCity(cityName) {
         //Day 2 Date
         let day2 = new Date(response.list[9].dt * 1000).toLocaleDateString("en-US");
         $("#day2").text("(" + day2 + ")");
-33
+
         //Day 2 Icon and Background
         let day2WeatherCondition = response.list[9].weather[0].main;
 
@@ -259,11 +299,6 @@ function searchForCity(cityName) {
     });
 };
     
-// function alertCityName() {
-//     var selectedCity = $(this).attr("id");
-//     alert(selectedCity);
-// };
-    
 function renderButtons(){
     $("#buttonsDisplay").empty();
 
@@ -276,7 +311,7 @@ function renderButtons(){
 
         recentCityButton.text(cities[i]);
 
-        $("#buttonsDisplay").append(recentCityButton);
+        $("#buttonsDisplay").prepend(recentCityButton);
 
         console.log(recentCityButton);
     };
@@ -300,40 +335,4 @@ $(document).on("click", ".cities", function(){
     searchForCity(selectedCity);
 });
 
-//var recentCities = JSON.parse(localStorage.getItem("recentCities")) || [];
-
-// $("button").click(function(){
-//    // e.preventDefault();
-
-//     console.log("HI");
-
-//     alertCityName();
-
-    //let selectedCitys = $(this).attr("id");
-
-    //console.log(selectedCitys);
-
-    //let cityName = $(this).children().attr("id");
-
-    // for(var i = 0; i < selectedCitys.length; i++){
-    //     let storedCity = selectedCitys[i];
-
-    //     console.log(storedCity);
-    // }
-    
-
-    //console.log(cityName);
-
-    //searchForCity(cityName);
-
-
-    
-
-    // for (var i = 0; i < recentCities.length; i++){
-    //     if(recentCities[i] === cityName) {
-    //         searchForCity(cityName);
-    //     }; 
-    // };
-
-});
 
