@@ -10,6 +10,14 @@ header {
     padding-left: 1rem;
 }
 
+#recentlySearchedCities {
+    margin-left: 2rem;
+}
+
+.btn-group-vertical {
+    margin-left: 2rem;
+}
+
 
 /* Weather Classes */
 .clouds {
@@ -39,14 +47,6 @@ header {
     background-size: cover;
     background-repeat: no-repeat;
     text-align: center;
-}
-
-#recentlySearchedCities {
-    margin-left: 2rem;
-}
-
-.btn-group-vertical {
-    margin-left: 2rem;
 }
 
 /* UV Index Classes */

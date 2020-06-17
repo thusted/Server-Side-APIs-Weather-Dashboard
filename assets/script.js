@@ -2,15 +2,13 @@ const apiKey = "4de73193406a7f35e8b27fe430465b0a";
 let cities = [];
 
 function searchForCity(cityName) {
+    //AJAX call for current day weather
     let queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + apiKey;
 
-    //AJAX call for current day weather
     $.ajax({
         url: queryURL,
         method: "GET"
     }).then(function(response){
-        console.log(response);
-
         let city = response.name;
 
         let date = new Date(response.dt * 1000).toLocaleDateString("en-US");
@@ -59,6 +57,7 @@ function searchForCity(cityName) {
             $("#currentSearch").addClass("smoke");
         };
 
+        //AJAX call for UV data
         let lat = response.coord.lat;
         let lon = response.coord.lon;
 
@@ -101,9 +100,9 @@ function searchForCity(cityName) {
         });
     });
 
+    //AJAX call for 5-day forecast
     let queryURLForecast = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&appid=" + apiKey;
 
-    //AJAX call for 5-day forecast
     $.ajax({
         url: queryURLForecast,
         method: "GET"
@@ -306,17 +305,23 @@ function searchForCity(cityName) {
 };
     
 function renderButtons(){
+    //Empty button display everytime a button is added to avoid repetition
     $("#buttonsDisplay").empty();
 
     for (var i = 0; i < cities.length; i++){
+        //Create button for every city in cities array
         var recentCityButton = $("<button>");
 
+        //Give button class
         recentCityButton.addClass("btn btn-secondary cities");
 
+        //Give button id unique to city name
         recentCityButton.attr("id", cities[i]);
 
+        //Populate button with text of city name
         recentCityButton.text(cities[i]);
 
+        //Display buttons in buttonsDisplay
         $("#buttonsDisplay").prepend(recentCityButton);
     };
 };
@@ -341,6 +346,11 @@ $("#searchBtn").click(function(e) {
 
 $(document).on("click", ".cities", function(){
     var selectedCity = $(this).attr("id");
+
+    //Store the city of any given city button clicked into localStorage
+    localStorage.setItem("mostRecentCity", JSON.stringify(selectedCity));
+
+    //Invoke searchForCity function when city button is clicked
     searchForCity(selectedCity);
 });
 
@@ -351,5 +361,3 @@ $(document).ready(function(){
     //Invoke the searchForCity function on lastStoredCity
     searchForCity(lastStoredCity);
 });
-
-
