@@ -110,7 +110,7 @@ function searchForCity(cityName) {
     }).then(function(response){
         //Day 1 Date
         let day1 = new Date(response.list[9].dt * 1000).toLocaleDateString("en-US");
-        $("#day1").text("(" + day1 + ")");
+        $("#day1").text(day1);
 
         //Day 1 Icon and Background
         let day1WeatherCondition = response.list[9].weather[0].main;
@@ -149,7 +149,7 @@ function searchForCity(cityName) {
         
         //Day 2 Date
         let day2 = new Date(response.list[17].dt * 1000).toLocaleDateString("en-US");
-        $("#day2").text("(" + day2 + ")");
+        $("#day2").text(day2);
 
         //Day 2 Icon and Background
         let day2WeatherCondition = response.list[17].weather[0].main;
@@ -188,7 +188,7 @@ function searchForCity(cityName) {
 
         //Day 3 Date
         let day3 = new Date(response.list[25].dt * 1000).toLocaleDateString("en-US");
-        $("#day3").text("(" + day3 + ")");
+        $("#day3").text(day3);
 
         //Day 3 Icon and Background
         let day3WeatherCondition = response.list[25].weather[0].main;
@@ -227,7 +227,7 @@ function searchForCity(cityName) {
 
         //Day 4 Date
         let day4 = new Date(response.list[33].dt * 1000).toLocaleDateString("en-US");
-        $("#day4").text("(" + day4 + ")");
+        $("#day4").text(day4);
 
         //Day 4 Icon and Background
         let day4WeatherCondition = response.list[33].weather[0].main;
@@ -266,7 +266,7 @@ function searchForCity(cityName) {
 
         //Day 5 Date
         let day5 = new Date(response.list[39].dt * 1000).toLocaleDateString("en-US");
-        $("#day5").text("(" + day5 + ")");
+        $("#day5").text(day5);
 
         //Day 5 Icon and Background
         let day5WeatherCondition = response.list[39].weather[0].main;
@@ -324,19 +324,32 @@ function renderButtons(){
 $("#searchBtn").click(function(e) {
     e.preventDefault();
 
-    searchForCity($("#inputCity").val());
-
     let mostRecentCity = $("#inputCity").val();
 
+    //Invoke the searchForCity function on city entered
+    searchForCity(mostRecentCity);
+
+    //Store the entered city in the cities array
     cities.push(mostRecentCity);
 
+    //Store the entered city into localStorage
+    localStorage.setItem("mostRecentCity", JSON.stringify(mostRecentCity));
+
+    //Invoke the renderButtons function
     renderButtons();
 });
 
 $(document).on("click", ".cities", function(){
     var selectedCity = $(this).attr("id");
-    console.log(selectedCity);
     searchForCity(selectedCity);
+});
+
+$(document).ready(function(){
+    //Pull the stored city out of local storage
+    lastStoredCity = JSON.parse(localStorage.getItem("mostRecentCity"));
+
+    //Invoke the searchForCity function on lastStoredCity
+    searchForCity(lastStoredCity);
 });
 
 
